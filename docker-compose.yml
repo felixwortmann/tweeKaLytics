@@ -39,8 +39,25 @@ services:
     depends_on:
       - kafka-service-tweekalytics
 
+  python-kafka-consumer:
+    network_mode: "host"
+    container_name: python-kafka-consumer
+    build:
+      context: ./kafka_consumer
+      dockerfile: Dockerfile
+    depends_on:
+      - kafka-service-tweekalytics  
+      
+  database:
+    image: "mongo"
+    container_name: "database"
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
 
 volumes:
   mongo-service-tweekalytics:
   kafka-service-tweekalytics:
+  mongo-data:
 

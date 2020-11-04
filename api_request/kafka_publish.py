@@ -3,8 +3,11 @@ from kafka.errors import KafkaError
 import json
 
 def send_json(raw_json):
-    producer = KafkaProducer(bootstrap_servers=['localhost:9092'],value_serializer=lambda m: json.dumps(m).encode('ascii'))
-    producer.send('json-topic', json.loads(raw_json))
+    try:
+        producer = KafkaProducer(bootstrap_servers=['localhost:9092'],value_serializer=lambda m: json.dumps(m).encode('ascii'))
+        producer.send('json-topic', json.loads(raw_json))
+    except Exception:
+        pass
 
 
 # Asynchronous by default

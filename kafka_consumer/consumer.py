@@ -1,16 +1,25 @@
 from kafka import KafkaConsumer, KafkaProducer
+from pymongo import MongoClient
+from bson.json_util import loads
 
 if __name__ == '__main__':
-    print('Running Consumer..')
-    parsed_records = []
-    topic_name = 'raw_recipes'
-    parsed_topic_name = 'parsed_recipes'
 
+    # database
+    client = MongoClient('mongodb://localhost:27017')
+    db = client['twitter']
+    collection = db['tweets']
+
+    # kafka
+    topic_name = 'json-topic'
     consumer = KafkaConsumer(topic_name, 
         auto_offset_reset='earliest', 
         bootstrap_servers=['localhost:9092'], 
         api_version=(0, 10), 
-        consumer_timeout_ms=1000)
+        consumer_timeout_ms=10000)
+
+    # kafka to mongo
     for msg in consumer:
-        value = msg.value
+        collection.insert_one(loads(msg.value))
+
+    # close kafka connection
     consumer.close()

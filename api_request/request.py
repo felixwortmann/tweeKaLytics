@@ -24,7 +24,7 @@ api = tweepy.API(auth)
 
 class MyStreamListener(tweepy.StreamListener):
     def on_data(self, raw_data):
-        print(str(raw_data))
+        #print(str(raw_data))
         kafka_publish.send_json(raw_data)
 
     def on_status(self, status):
@@ -47,4 +47,4 @@ class MyStream():
 
 listener = MyStreamListener()
 stream = MyStream(api.auth, listener)
-stream.start(['python'])
+stream.start(['trump'])
