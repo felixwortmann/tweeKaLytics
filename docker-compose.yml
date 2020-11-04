@@ -14,6 +14,8 @@ services:
       context: ./api_request
       dockerfile: Dockerfile
     container_name: python-api-request
+    depends_on:
+      - kafka-service-tweekalytics
 
 volumes:
   mongo-service-tweekalytics:
