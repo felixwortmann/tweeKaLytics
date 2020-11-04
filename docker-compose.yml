@@ -9,6 +9,11 @@ services:
       - "27017:27017"
   kafka-service-tweekalytics:
     container_name: "kafka-service-tweekalytics"
+  python-api-request:
+    build:
+      context: ./api_request
+      dockerfile: Dockerfile
+    container_name: python-api-request
 
 volumes:
   mongo-service-tweekalytics:

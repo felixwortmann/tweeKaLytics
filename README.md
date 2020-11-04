@@ -2,14 +2,11 @@
 Twitter Analytics with Kafka
 
 ## Run
-`docker-compose up --build`
-<!-- ### Setup
-- Run `pip3 install -r requirements.txt`
-- Run `mkdir keys`
 - Apply for the Twitter API
-  - Put the API Key in keys/api_key
-  - Put the API Key secret in keys/api_key_secret
-  - Put the Bearer Token in keys/bearer_token -->
+  - Put the API Key in api_request/keys/api_key
+  - Put the API Key secret in api_request/keys/api_key_secret
+  - Put the Bearer Token in api_request/keys/bearer_token
+- `docker-compose up --build`
 
 | Directory      | Function                                                     |
 | -------------- | ------------------------------------------------------------ |
