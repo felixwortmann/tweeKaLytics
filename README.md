@@ -1,5 +1,5 @@
 # tweeKaLytics
 Twitter Kafka Analytics
 
-### How to run
+### Setup
 `pip3 install -r requirements.txt`
