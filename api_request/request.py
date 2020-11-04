@@ -1,33 +1,23 @@
 import tweepy
 
-with open("api_key", "r") as f:
+with open("api_key.txt", "r") as f:
     api_key = f.read()
 
-with open("api_key_secret", "r") as f:
+with open("api_key_secret.txt", "r") as f:
     api_key_secret = f.read()
 
+with open("access_token.txt", "r") as f:
+    access_token = f.read()
+
+with open("access_token_secret.txt", "r") as f:
+    access_token_secret = f.read()
+
 auth = tweepy.OAuthHandler(api_key, api_key_secret)
-
-# token = session.get('request_token')
-# session.delete('request_token')
-# auth.request_token = { 'oauth_token' : token,
-#                          'oauth_token_secret' : verifier }
-
-# try:
-#     auth.get_access_token(verifier)
-# except tweepy.TweepError:
-#     print('Error! Failed to get access token.')
+auth.set_access_token(access_token,access_token_secret)
 
 api = tweepy.API(auth)
 
 
-
-
-
-print("Test request")
-for tweet in tweepy.Cursor(api.search, q='trump').items(10):
-    print(tweet.text)
-print("-----------")
 
 # Stream Listener
 

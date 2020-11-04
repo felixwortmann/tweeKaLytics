@@ -3,9 +3,11 @@ Twitter Analytics with Kafka
 
 ## Run
 - Apply for the Twitter API
-  - Put the API Key in api_request/keys/api_key
-  - Put the API Key secret in api_request/keys/api_key_secret
-  - Put the Bearer Token in api_request/keys/bearer_token
+  - Put the API Key in api_request/api_key.txt
+  - Put the API Key secret in api_request/api_key_secret.txt
+  - Put the Bearer Token in api_request/bearer_token.txt
+  - Put the Access Token Secret in api_request/access_token_secret.txt
+  - Put the Access Token in api_request/access_token.txt
 - `docker-compose up --build`
 
 | Directory      | Function                                                     |
