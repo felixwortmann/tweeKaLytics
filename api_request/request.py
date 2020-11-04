@@ -1,4 +1,5 @@
 import tweepy
+import kafka_publish
 
 with open("api_key.txt", "r") as f:
     api_key = f.read()
@@ -24,6 +25,7 @@ api = tweepy.API(auth)
 class MyStreamListener(tweepy.StreamListener):
     def on_data(self, raw_data):
         print(str(raw_data))
+        kafka_publish.send_json(raw_data)
 
     def on_status(self, status):
         print(status.text)
