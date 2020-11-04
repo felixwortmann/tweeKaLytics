@@ -1,14 +1,5 @@
 version: "3.8"
 services:
-  mongo-service-tweekalytics:
-    network_mode: "host"
-    image: "mongo"
-    container_name: "mongo-service-tweekalytics"
-    volumes:
-      - mongo-service-tweekalytics:/data/db
-    ports:
-      - 27017:27017
-
   kafka-service-tweekalytics:
     container_name: "kafka-service-tweekalytics"
     image: bitnami/kafka
@@ -22,14 +13,15 @@ services:
       - 9092:9092
     depends_on:
       - zookeeper
-    
+
   zookeeper:
-    image: 'bitnami/zookeeper:latest'
+    image: "bitnami/zookeeper:latest"
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
     ports:
       - 2181:2181
-  
+    container_name: zookeeper
+
   python-api-request:
     network_mode: "host"
     build:
@@ -46,8 +38,8 @@ services:
       context: ./kafka_consumer
       dockerfile: Dockerfile
     depends_on:
-      - kafka-service-tweekalytics  
-      
+      - kafka-service-tweekalytics
+
   database:
     image: "mongo"
     container_name: "database"
@@ -57,7 +49,4 @@ services:
       - "27017:27017"
 
 volumes:
-  mongo-service-tweekalytics:
-  kafka-service-tweekalytics:
   mongo-data:
-

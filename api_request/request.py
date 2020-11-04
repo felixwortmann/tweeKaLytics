@@ -47,4 +47,4 @@ class MyStream():
 
 listener = MyStreamListener()
 stream = MyStream(api.auth, listener)
-stream.start(['trump'])
+stream.start(['trump','election','biden'])
