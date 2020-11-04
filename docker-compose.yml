@@ -10,6 +10,7 @@ services:
 
   kafka-service-tweekalytics:
     container_name: "kafka-service-tweekalytics"
+<<<<<<< HEAD
     image: bitnami/kafka
     ports:
       - '9092:9092'
@@ -28,6 +29,13 @@ services:
       - '2181:2181'
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
+=======
+  python-api-request:
+    build:
+      context: ./api_request
+      dockerfile: Dockerfile
+    container_name: python-api-request
+>>>>>>> 3f64b60292d89ee174db4761f77004e86e5aa0fe
 
 volumes:
   mongo-service-tweekalytics:

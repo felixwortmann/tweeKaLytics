@@ -1,1 +1,5 @@
-keys/
+api_key.txt
+api_key_secret.txt
+bearer_token.txt
+access_token_secret.txt
+access_token.txt
