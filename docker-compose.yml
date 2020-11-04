@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  mongo-service-tweekalytics:
+    image: "mongo"
+    container_name: "mongo-service-tweekalytics"
+    volumes:
+      - mongo-service-tweekalytics:/data/db
+    ports:
+      - "27017:27017"
+  kafka-service-tweekalytics:
+    container_name: "kafka-service-tweekalytics"
+
+volumes:
+  mongo-service-tweekalytics:
