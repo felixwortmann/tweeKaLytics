@@ -21,6 +21,7 @@ services:
     ports:
       - 2181:2181
     container_name: zookeeper
+    tmpfs: "/datalog"
 
   python-api-request:
     network_mode: "host"
