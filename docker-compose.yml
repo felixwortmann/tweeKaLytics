@@ -1,44 +1,44 @@
 version: "3.8"
 services:
-  # kafka-service-tweekalytics:
-  #   container_name: "kafka-service-tweekalytics"
-  #   image: bitnami/kafka
-  #   environment:
-  #     - KAFKA_BROKER_ID=1
-  #     - KAFKA_LISTENERS=PLAINTEXT://:9092
-  #     - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092
-  #     - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
-  #     - ALLOW_PLAINTEXT_LISTENER=yes
-  #   ports:
-  #     - 9092:9092
-  #   depends_on:
-  #     - zookeeper
+  kafka-service-tweekalytics:
+    container_name: "kafka-service-tweekalytics"
+    image: bitnami/kafka
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_LISTENERS=PLAINTEXT://:9092
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    ports:
+      - 9092:9092
+    depends_on:
+      - zookeeper
 
-  # zookeeper:
-  #   image: "bitnami/zookeeper:latest"
-  #   environment:
-  #     - ALLOW_ANONYMOUS_LOGIN=yes
-  #   ports:
-  #     - 2181:2181
-  #   container_name: zookeeper
+  zookeeper:
+    image: "bitnami/zookeeper:latest"
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    ports:
+      - 2181:2181
+    container_name: zookeeper
 
-  # python-api-request:
-  #   network_mode: "host"
-  #   build:
-  #     context: ./api_request
-  #     dockerfile: Dockerfile
-  #   container_name: python-api-request
-  #   depends_on:
-  #     - kafka-service-tweekalytics
+  python-api-request:
+    network_mode: "host"
+    build:
+      context: ./api_request
+      dockerfile: Dockerfile
+    container_name: python-api-request
+    depends_on:
+      - kafka-service-tweekalytics
 
-  # python-kafka-consumer:
-  #   network_mode: "host"
-  #   container_name: python-kafka-consumer
-  #   build:
-  #     context: ./kafka_consumer
-  #     dockerfile: Dockerfile
-  #   depends_on:
-  #     - kafka-service-tweekalytics
+  python-kafka-consumer:
+    network_mode: "host"
+    container_name: python-kafka-consumer
+    build:
+      context: ./kafka_consumer
+      dockerfile: Dockerfile
+    depends_on:
+      - kafka-service-tweekalytics
 
   database:
     image: "mongo"
