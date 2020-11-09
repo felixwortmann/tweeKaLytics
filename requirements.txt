@@ -2,3 +2,4 @@ pymongo
 nltk
 matplotlib
 numpy
+pandoc
