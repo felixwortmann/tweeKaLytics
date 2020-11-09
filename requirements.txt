@@ -1,0 +1,4 @@
+pymongo
+nltk
+matplotlib
+numpy
