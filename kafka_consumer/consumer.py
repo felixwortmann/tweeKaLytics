@@ -8,7 +8,7 @@ db = client['twitter']
 collection = db['tweets']
 
 # kafka
-topic_name = 'json-topic'
+topic_name = 'tweets'
 consumer = KafkaConsumer(topic_name, 
     auto_offset_reset='earliest', 
     bootstrap_servers=['localhost:9092'], 
